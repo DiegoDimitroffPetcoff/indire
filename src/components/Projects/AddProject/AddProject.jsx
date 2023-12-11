@@ -1,39 +1,68 @@
-export const AddProject = () => {
+import { useState } from "react";
+
+export const AddProject = (GralInfoComponent) => {
+  const [title,setTitle] = useState("");
+  const [address,setAddress] = useState("");
+  const [description,setDescription] = useState("");
+  const [list,setList] = useState([]);
+  function handleSubmite(e) {
+    e.preventDefault()
+    const newObject ={
+      title,
+      address,
+      description
+    }
+    console.log(list)
+    const NewList = [...list, newObject]
+    console.log(NewList)
+  }
+
   return (
     <>
       <h1>Add New Project</h1>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">
-          Project Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Example: Description of the project"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">
-          Address
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Address Building"
-        />
-      </div>
-      <div className="mb-3">
-        <label for="exampleFormControlTextarea1" className="form-label">
-          Project Description Example
-        </label>
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="10"
-        ></textarea>
-      </div>
+      <form onSubmit={handleSubmite}>
+        <div className="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">
+            Project Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            value={title}
+            placeholder="Example: Description of the project"
+            onChange={(e)=>{setTitle(e.target.value)}}
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">
+            Address
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            value={address}
+            placeholder="Address Building"
+            onChange={(e)=>{setAddress(e.target.value)}}
+          />
+        </div>
+        <div className="mb-3">
+          <label for="exampleFormControlTextarea1" className="form-label">
+            Project Description Example
+          </label>
+          <textarea
+            class="form-control"
+            value={description}
+            rows="10"
+            onChange={(e)=>{setDescription(e.target.value)}}
+          ></textarea>
+        </div>
+        <button>AGREGAR</button>
+      </form>
+
+
+
+      {/*TEMPLANTES:*/}
       <div
         class="btn-group"
         role="group"
@@ -47,6 +76,7 @@ export const AddProject = () => {
           autocomplete="off"
           checked
         />
+
         <label class="btn btn-outline-danger" for="vbtn-radio1">
           Template 1
         </label>
