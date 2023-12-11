@@ -12,6 +12,7 @@ export const ProjectListByDate = ({ projectList }) => {
   }, []);
   return (
     <div class="container-fluid">
+      <h1>Last Project Updated</h1>
       {loading ? (
                 <table className="table">
                 <thead>
