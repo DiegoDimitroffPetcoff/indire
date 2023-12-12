@@ -1,20 +1,24 @@
 import { useState } from "react";
 
-export const AddProject = (GralInfoComponent) => {
-  const [title,setTitle] = useState("");
-  const [address,setAddress] = useState("");
-  const [description,setDescription] = useState("");
-  const [list,setList] = useState([]);
+export const AddProject = ({ GralInfoMock }) => {
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
+  const [list, setList] = useState(GralInfoMock);
   function handleSubmite(e) {
-    e.preventDefault()
-    const newObject ={
+    e.preventDefault();
+    const newObject = {
       title,
       address,
-      description
-    }
-    console.log(list)
-    const NewList = [...list, newObject]
-    console.log(NewList)
+      description,
+    };
+
+    let NewList = [...list, newObject];
+    setList(NewList);
+    console.log(list);
+    setTitle("");
+    setAddress("");
+    setDescription("");
   }
 
   return (
@@ -30,7 +34,9 @@ export const AddProject = (GralInfoComponent) => {
             className="form-control"
             value={title}
             placeholder="Example: Description of the project"
-            onChange={(e)=>{setTitle(e.target.value)}}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
         </div>
 
@@ -43,7 +49,9 @@ export const AddProject = (GralInfoComponent) => {
             className="form-control"
             value={address}
             placeholder="Address Building"
-            onChange={(e)=>{setAddress(e.target.value)}}
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
           />
         </div>
         <div className="mb-3">
@@ -54,13 +62,13 @@ export const AddProject = (GralInfoComponent) => {
             class="form-control"
             value={description}
             rows="10"
-            onChange={(e)=>{setDescription(e.target.value)}}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
           ></textarea>
         </div>
         <button>AGREGAR</button>
       </form>
-
-
 
       {/*TEMPLANTES:*/}
       <div
